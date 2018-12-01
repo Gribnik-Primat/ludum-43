@@ -92,7 +92,7 @@ public class PlayerControl : MonoBehaviour
             {
                 Move(Speed);
             }
-            if (Input.GetKey(KeyCode.S) && OpponentIsCatcheable) //when Right Key pressed (D)
+            if (Input.GetKey(KeyCode.F) && OpponentIsCatcheable) //when Right Key pressed (D)
             {
                 GameObject enemy = GameObject.FindGameObjectWithTag("Player1");
                 enemy.GetComponent<PlayerControlSecond>().YouCatched = true;
@@ -106,13 +106,13 @@ public class PlayerControl : MonoBehaviour
             {
                 Rb2d.velocity = new Vector2(0.0f, Rb2d.velocity.y);
             }
-            if (Input.GetKey(KeyCode.LeftControl))
+            if (Input.GetKey(KeyCode.G))
             {
                 GameObject enemy = GameObject.FindGameObjectWithTag("Player1");
                 enemy.GetComponent<PlayerControlSecond>().OpponentIsCatcheable = false;
                 YouCatched = false;
             }
-            if (OpponentCatched && Input.GetKeyDown(KeyCode.LeftShift))
+            if (OpponentCatched && Input.GetKeyDown(KeyCode.F))
             {
                 TiltCount++;
                 if(TiltCount == 2)
@@ -141,7 +141,7 @@ public class PlayerControl : MonoBehaviour
             target.transform.position = enemy.transform.position;
             target.transform.position = new Vector3(enemy.transform.position.x, enemy.transform.position.y + DisatanceUpHead, enemy.transform.position.z);
             Rb2d.velocity.Set(0, 0);
-            if (Input.GetKeyDown(KeyCode.LeftShift))
+            if (Input.GetKeyDown(KeyCode.F))
             {
                 EscapeCount++;
                 if (EscapeCount == 2)
