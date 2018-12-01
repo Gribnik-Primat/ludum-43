@@ -20,6 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4274433670251786}
   - component: {fileID: 61108335470754162}
+  - component: {fileID: 114111242994679092}
+  - component: {fileID: 114194806020212848}
   m_Layer: 0
   m_Name: TeleportTrigger
   m_TagString: Untagged
@@ -34,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1310669720526690}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -7, z: 0}
   m_LocalScale: {x: 500, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -65,3 +67,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114111242994679092
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1310669720526690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31bad11787a96fb43afa0e99db6b86c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportPoint1: {x: -4, y: 10, z: 0}
+  teleportPoint2: {x: 4, y: 10, z: 0}
+  plusScoreOnTeleport: 0
+  minusScoreOnTeleport: 0
+  RbPlayer1: {fileID: 0}
+  RbPlayer2: {fileID: 0}
+--- !u!114 &114194806020212848
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1310669720526690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31bad11787a96fb43afa0e99db6b86c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportPoint1: {x: -4, y: 10, z: 0}
+  teleportPoint2: {x: 4, y: 10, z: 0}
+  plusScoreOnTeleport: 50
+  minusScoreOnTeleport: 20
+  RbPlayer1: {fileID: 50991581008760686, guid: 98585ba7340ddad4dbec33cecc55d3e1, type: 2}
+  RbPlayer2: {fileID: 50923521166826140, guid: b55154f81a514c7409e42b706a6e8b0b, type: 2}

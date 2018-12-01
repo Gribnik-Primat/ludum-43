@@ -20,7 +20,7 @@ public class MovePlatform : MonoBehaviour {
 
     void Update()
     {
-        Debug.Log(Check);
+        //Debug.Log(Check);
         if (Check == false)
         {
             transform.position = Vector3.Lerp(transform.position, destinationPoint, smoothing * Time.deltaTime);
