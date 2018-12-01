@@ -40,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1474437601803148}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.844879, y: -0.6569034, z: -0.009849868}
+  m_LocalPosition: {x: -8, y: -0.6569034, z: -0.009849868}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -166,6 +166,7 @@ MonoBehaviour:
   YouCatched: 0
   DisatanceUpHead: 2
   TiltCount: 0
+  EscapeCount: 0
   direction: 1
   Speed: {x: 5, y: 0}
   jump: {x: 0, y: 300}

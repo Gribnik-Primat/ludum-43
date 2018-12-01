@@ -17,6 +17,7 @@ public class PlayerControlSecond : MonoBehaviour
     public bool YouCatched = false; // пойман ты
     public float DisatanceUpHead = 2f;
     public int TiltCount = 0; //кол-во трясок
+    public int EscapeCount = 0;// кол-во освобождений
     public int direction = 1;
     public Vector2 Speed = new Vector3(0f, 0f, 0f);
     private bool is_jump = false;
@@ -95,6 +96,12 @@ public class PlayerControlSecond : MonoBehaviour
             {
                 Rb2d.velocity = new Vector2(0.0f, Rb2d.velocity.y);
             }
+            if (Input.GetKey(KeyCode.RightControl))
+            {
+                GameObject enemy = GameObject.FindGameObjectWithTag("Player");
+                enemy.GetComponent<PlayerControl>().OpponentIsCatcheable = false;
+                YouCatched = false;
+            }
             if (OpponentCatched && Input.GetKeyDown(KeyCode.RightShift))
             {
                 TiltCount++;
@@ -134,6 +141,15 @@ public class PlayerControlSecond : MonoBehaviour
             target.transform.position = enemy.transform.position;
             target.transform.position = new Vector3(enemy.transform.position.x, enemy.transform.position.y + DisatanceUpHead, enemy.transform.position.z);
             Rb2d.velocity.Set(0, 0);
+            if (Input.GetKeyDown(KeyCode.RightShift))
+            {
+                EscapeCount++;
+                if (EscapeCount == 2)
+                {
+                    target.transform.rotation = Quaternion.Euler(0, 0, 0);
+                    YouCatched = false;
+                }
+            }
         }
     }
 }

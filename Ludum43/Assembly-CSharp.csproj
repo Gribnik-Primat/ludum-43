@@ -62,10 +62,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\DestroyAndCreate.cs" />
+    <Compile Include="Assets\Scripts\DisplayScore.cs" />
     <Compile Include="Assets\Scripts\MovePlatform.cs" />
     <Compile Include="Assets\Scripts\PlayerControl.cs" />
     <Compile Include="Assets\Scripts\PlayerControlSecond.cs" />
     <Compile Include="Assets\Scripts\PlayerStats.cs" />
+    <Compile Include="Assets\Scripts\StartGame.cs" />
     <Compile Include="Assets\Scripts\TimeChange.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>D:/LudumDare/ludum-43/Ludum43/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
