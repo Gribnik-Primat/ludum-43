@@ -14,4 +14,9 @@ public class PlayerStats : MonoBehaviour {
     {
         score += iteratePlusScore;
     }
+    private void Update()
+    {
+        if (score < 0)
+            score = 0;
+    }
 }

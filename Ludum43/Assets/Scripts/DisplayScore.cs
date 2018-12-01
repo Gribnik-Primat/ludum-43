@@ -18,11 +18,11 @@ public class DisplayScore : MonoBehaviour {
         GameObject child1 = GameObject.FindGameObjectWithTag("Score");
         GameObject child2 = GameObject.FindGameObjectWithTag("Score1");
         GameObject child3 = GameObject.FindGameObjectWithTag("Time");
-        Text t1 = child1.GetComponent<Text>();
-        Text t2 = child2.GetComponent<Text>();
+        Slider t1 = child1.GetComponent<Slider>();
+        Slider t2 = child2.GetComponent<Slider>();
         Text t3 = child3.GetComponent<Text>();
-        t1.text = "Your score: " + player1.GetComponent<PlayerStats>().score.ToString();
-        t2.text = "Your score: " + player2.GetComponent<PlayerStats>().score.ToString();
+        t1.value = player1.GetComponent<PlayerStats>().score;
+        t2.value = player2.GetComponent<PlayerStats>().score;
         t3.text = cam.GetComponent<TimeChange>().timeOfGame.ToString();
     }
 }

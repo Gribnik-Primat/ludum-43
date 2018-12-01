@@ -20,8 +20,10 @@ public class PlayerControlSecond : MonoBehaviour
     public int EscapeCount = 0;// кол-во освобождений
     public int direction = 1;
     public Vector2 Speed = new Vector3(0f, 0f, 0f);
-    private bool is_jump = false;
     public Vector2 jump = new Vector2(0f, 2f);
+
+    private bool is_jump = false;
+
     // Use this for initialization
     void Start()
     {
@@ -30,6 +32,16 @@ public class PlayerControlSecond : MonoBehaviour
     void Move(Vector2 speed)//move через rigidbody
     {
         Rb2d.velocity = new Vector2(speed.x, Rb2d.velocity.y);
+        if (Rb2d.velocity.x < 0)
+        {
+            direction = -1;
+            target.transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+        if (Rb2d.velocity.x > 0)
+        {
+            direction = 1;
+            target.transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -122,16 +134,7 @@ public class PlayerControlSecond : MonoBehaviour
                     TiltCount = 0;
                 }
             }
-            if (Rb2d.velocity.x < 0)
-            {
-                direction = -1;
-                target.transform.rotation = Quaternion.Euler(0, 180, 0);
-            }
-            if (Rb2d.velocity.x > 0)
-            {
-                direction = 1;
-                target.transform.rotation = Quaternion.Euler(0, 0, 0);
-            }
+
 
         }
         else// мы пойманы

@@ -18,8 +18,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Players
+  - Platforms
   - 
   - 
   - 
@@ -45,4 +45,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Players
+    uniqueID: 3469228267
+    locked: 0
+  - name: Platforms
+    uniqueID: 4213326763
     locked: 0
