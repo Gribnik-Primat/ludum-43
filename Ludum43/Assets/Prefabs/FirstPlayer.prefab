@@ -103,7 +103,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.1676054, y: 0}
-  m_Size: {x: 3, y: 4}
+  m_Size: {x: 3, y: 3}
   m_Direction: 0
 --- !u!114 &114201814313532492
 MonoBehaviour:
@@ -121,12 +121,14 @@ MonoBehaviour:
   OpponentIsCatcheable: 0
   OpponentCatched: 0
   YouCatched: 0
+  YouThrowed: 0
   DisatanceUpHead: 2
   TiltCount: 0
   EscapeCount: 0
   direction: 1
   Speed: {x: 5, y: 0}
   jump: {x: 0, y: 300}
+  Timefreeze: 1
 --- !u!114 &114885823927123980
 MonoBehaviour:
   m_ObjectHideFlags: 1

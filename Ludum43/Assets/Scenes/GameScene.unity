@@ -32802,6 +32802,46 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114387749686903972, guid: c5587701f3388c743beca872aaf776b2,
+        type: 2}
+      propertyPath: m_WholeNumbers
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224614838354742524, guid: c5587701f3388c743beca872aaf776b2,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224789689488726738, guid: c5587701f3388c743beca872aaf776b2,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224789689488726738, guid: c5587701f3388c743beca872aaf776b2,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114387749686903972, guid: c5587701f3388c743beca872aaf776b2,
+        type: 2}
+      propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114387749686903972, guid: c5587701f3388c743beca872aaf776b2,
+        type: 2}
+      propertyPath: m_Transition
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114387749686903972, guid: c5587701f3388c743beca872aaf776b2,
+        type: 2}
+      propertyPath: m_MinValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114387749686903972, guid: c5587701f3388c743beca872aaf776b2,
+        type: 2}
+      propertyPath: m_Navigation.m_Mode
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5587701f3388c743beca872aaf776b2, type: 2}
   m_IsPrefabAsset: 0
@@ -41826,6 +41866,16 @@ Prefab:
         type: 2}
       propertyPath: Timefreeze
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 50991581008760686, guid: 98585ba7340ddad4dbec33cecc55d3e1,
+        type: 2}
+      propertyPath: m_AngularDrag
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 50991581008760686, guid: 98585ba7340ddad4dbec33cecc55d3e1,
+        type: 2}
+      propertyPath: m_LinearDrag
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98585ba7340ddad4dbec33cecc55d3e1, type: 2}
@@ -60241,6 +60291,21 @@ Prefab:
         type: 2}
       propertyPath: Timefreeze
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 70793020931026684, guid: b55154f81a514c7409e42b706a6e8b0b,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 50923521166826140, guid: b55154f81a514c7409e42b706a6e8b0b,
+        type: 2}
+      propertyPath: m_LinearDrag
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 50923521166826140, guid: b55154f81a514c7409e42b706a6e8b0b,
+        type: 2}
+      propertyPath: m_AngularDrag
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b55154f81a514c7409e42b706a6e8b0b, type: 2}
