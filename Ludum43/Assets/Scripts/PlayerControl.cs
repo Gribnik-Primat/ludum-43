@@ -15,13 +15,16 @@ public class PlayerControl : MonoBehaviour
     public bool OpponentIsCatcheable = false; // противник в радиусе захвата
     public bool OpponentCatched = false; // противник пойман
     public bool YouCatched = false; // пойман ты
+    public bool YouThrowed = false;
     public float DisatanceUpHead = 2f;
     public int TiltCount = 0; //кол-во трясок
     public int EscapeCount = 0;// кол-во освобождений
     public int direction = 1;
     public Vector2 Speed = new Vector3(0f,0f,0f);
     public Vector2 jump = new Vector2(0f, 2f);
+    public int Timefreeze = 1;
 
+    private int countfreeze = 0;
     private bool is_jump = false;
     // Use this for initialization
     void Start()
@@ -35,12 +38,12 @@ public class PlayerControl : MonoBehaviour
         {
             direction = -1;
             target.transform.rotation = Quaternion.Euler(0, 180, 0);
-        }
+        }//поворот
         if (Rb2d.velocity.x > 0)
         {
             direction = 1;
             target.transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
+        }//поворот
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -115,31 +118,35 @@ public class PlayerControl : MonoBehaviour
             if (OpponentCatched && Input.GetKeyDown(KeyCode.F))
             {
                 TiltCount++;
-                if(TiltCount == 2)
+                if (TiltCount == 2)
                 {
                     OpponentCatched = false;
                     GameObject enemy = GameObject.FindGameObjectWithTag("Player1");
-                    enemy.GetComponent<PlayerControlSecond>().YouCatched = false;
-                    enemy.transform.rotation = Quaternion.Euler(0, 0, 0);
-                   
+                    enemy.GetComponent<PlayerControlSecond>().YouThrowed = true;
+                    enemy.GetComponent<PlayerControlSecond>().InvokeRepeating("CountFreezeCatched", 0f, 1f);
+
                     if (direction == -1)
                     {
-                        enemy.transform.position = new Vector3(target.transform.position.x - 1f, 
+                        enemy.transform.position = new Vector3(target.transform.position.x - 1f,
                                                                 target.transform.position.y + 2f,
                                                                 target.transform.position.z);
                     }
-                    enemy.GetComponent<Rigidbody2D>().AddForce(new Vector2(1000f * direction, 1000f));
+                    enemy.GetComponent<Rigidbody2D>().AddForce(new Vector2(600f * direction, 1000f));
                     TiltCount = 0;
                 }
             }
-           
+
+
         }
         else// мы пойманы
         {
             target.transform.rotation = Quaternion.Euler(0, 0, 90);
             GameObject enemy = GameObject.FindGameObjectWithTag("Player1");
-            target.transform.position = enemy.transform.position;
-            target.transform.position = new Vector3(enemy.transform.position.x, enemy.transform.position.y + DisatanceUpHead, enemy.transform.position.z);
+            if (YouThrowed == false)
+            { 
+                target.transform.position = enemy.transform.position;
+                target.transform.position = new Vector3(enemy.transform.position.x, enemy.transform.position.y + DisatanceUpHead, enemy.transform.position.z);
+            }
             Rb2d.velocity.Set(0, 0);
             if (Input.GetKeyDown(KeyCode.F))
             {
@@ -150,6 +157,19 @@ public class PlayerControl : MonoBehaviour
                     YouCatched = false;
                 }
             }
+        }
+    }
+
+    void CountFreezeCatched()
+    {
+        countfreeze++;
+        if (countfreeze == Timefreeze)
+        {
+            YouCatched = false;
+            YouThrowed = false;
+            target.transform.rotation = Quaternion.Euler(0, 0, 0);
+            countfreeze = 0;
+            CancelInvoke();
         }
     }
 }

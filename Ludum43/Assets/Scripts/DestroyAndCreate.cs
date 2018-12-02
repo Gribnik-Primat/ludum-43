@@ -20,6 +20,7 @@ public class DestroyAndCreate : MonoBehaviour {
             //Debug.Log(enemy.GetComponent<PlayerStats>().score);
             enemy = GameObject.FindWithTag("Player");
             enemy.GetComponent<PlayerStats>().score -= minusScoreOnTeleport;
+            enemy.transform.position = teleportPoint1;
         }
         if (collision.tag == "Player1")
         {
@@ -29,6 +30,7 @@ public class DestroyAndCreate : MonoBehaviour {
             //Debug.Log(enemy.GetComponent<PlayerStats>().score);
             enemy = GameObject.FindWithTag("Player1");
             enemy.GetComponent<PlayerStats>().score -= minusScoreOnTeleport;
+            enemy.transform.position = teleportPoint2;
         }
     }
 }
