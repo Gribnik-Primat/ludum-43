@@ -171,3 +171,5 @@ D:\LudumDare\ludum-43\Ludum43\obj\Debug\Assembly-CSharp.pdb
 D:\LudumDare\ludum-43\Ludum43\Temp\bin\Debug\com.unity.postprocessing.Editor.dll
 D:\LudumDare\ludum-43\Ludum43\Temp\bin\Debug\com.unity.postprocessing.Runtime.dll
 D:\LudumDare\ludum-43\Ludum43\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+D:\LudumDare\ludum-43\Ludum43\Temp\bin\Debug\UnityEditor.UI.dll
+D:\LudumDare\ludum-43\Ludum43\Temp\bin\Debug\UnityEditor.UI.xml

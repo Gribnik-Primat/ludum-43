@@ -18,6 +18,7 @@ public class EndGame : MonoBehaviour {
     public AudioSource audioplayer;
     public AudioClip audio;
 
+    private bool isEnd;
     private bool timeCheck = true;
     private AsyncOperation asyncOperation;
 
@@ -28,61 +29,62 @@ public class EndGame : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(GameObject.FindObjectOfType<TimeChange>().timeOfGame <= 0 && timeCheck == true)
+        if (!isEnd)
         {
-            Ds.enabled = false;
-            Score.SetActive(false);
-            Score1.SetActive(false);
-            Time.SetActive(false);
-            Player.SetActive(false);
-            Player1.SetActive(false);
-            timeCheck = false;
-            asyncOperation = SceneManager.LoadSceneAsync("Menu");
-            asyncOperation.allowSceneActivation = false;
-            Text.SetActive(true);
-            if (Input.anyKeyDown)
+            if (GameObject.FindObjectOfType<TimeChange>().timeOfGame <= 0 && timeCheck == true)
+            {
+                Ds.enabled = false;
+                Score.SetActive(false);
+                Score1.SetActive(false);
+                Time.SetActive(false);
+                Player.SetActive(false);
+                Player1.SetActive(false);
+                timeCheck = false;
+                asyncOperation = SceneManager.LoadSceneAsync("Menu");
+                asyncOperation.allowSceneActivation = false;
+                Text.SetActive(true);
+                isEnd = true;
+            }
+            if (Player.GetComponent<PlayerStats>().score > 499 && timeCheck == true)
+            {
+                Ds.enabled = false;
+                Score.SetActive(false);
+                Score1.SetActive(false);
+                Time.SetActive(false);
+                Player.SetActive(false);
+                Player1.SetActive(false);
+                timeCheck = false;
+                asyncOperation = SceneManager.LoadSceneAsync("Menu");
+                asyncOperation.allowSceneActivation = false;
+                Text1.SetActive(true);
+                audioplayer.PlayOneShot(audio);
+                isEnd = true;
+            }
+            if (Player1.GetComponent<PlayerStats>().score > 499 && timeCheck == true)
+            {
+                Ds.enabled = false;
+                Score.SetActive(false);
+                Score1.SetActive(false);
+                Time.SetActive(false);
+                Player.SetActive(false);
+                Player1.SetActive(false);
+                timeCheck = false;
+                asyncOperation = SceneManager.LoadSceneAsync("Menu");
+                asyncOperation.allowSceneActivation = false;
+                Text2.SetActive(true);
+                audioplayer.PlayOneShot(audio);
+                isEnd = true;
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 LaunchGame();
             }
         }
-        if (Player.GetComponent<PlayerStats>().score > 499 && timeCheck == true)
-        {
-            Ds.enabled = false;
-            Score.SetActive(false);
-            Score1.SetActive(false);
-            Time.SetActive(false);
-            Player.SetActive(false);
-            Player1.SetActive(false);
-            timeCheck = false;
-            asyncOperation = SceneManager.LoadSceneAsync("Menu");
-            asyncOperation.allowSceneActivation = false;
-            Text1.SetActive(true);
-            audioplayer.PlayOneShot(audio);
-            if (Input.anyKeyDown)
-            {
-                LaunchGame();
-            }
-        }
-        if (Player1.GetComponent<PlayerStats>().score > 499 && timeCheck == true)
-        {
-            Ds.enabled = false;
-            Score.SetActive(false);
-            Score1.SetActive(false);
-            Time.SetActive(false);
-            Player.SetActive(false);
-            Player1.SetActive(false);
-            timeCheck = false;
-            asyncOperation = SceneManager.LoadSceneAsync("Menu");
-            asyncOperation.allowSceneActivation = false;
-            Text2.SetActive(true);
-            audioplayer.PlayOneShot(audio);
-            if (Input.anyKeyDown)
-            {
-                LaunchGame();
-            }
-        }
+        
 
-      
     }
 
     void LaunchGame()

@@ -41,7 +41,10 @@ public class PlayerControlSecond : MonoBehaviour
     }
     void Move(Vector2 speed)//move через rigidbody
     {
-        audioplayer.PlayOneShot(audiowalk);
+        if (!audioplayer.isPlaying && is_jump == false)
+        {
+            audioplayer.PlayOneShot(audiowalk);
+        }
         anim.SetBool("IsWalk", true);
         Rb2d.velocity = new Vector2(speed.x, Rb2d.velocity.y);
         if (Rb2d.velocity.x < 0)
@@ -50,7 +53,7 @@ public class PlayerControlSecond : MonoBehaviour
             target.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
         if (Rb2d.velocity.x > 0)
-        {   
+        {
             direction = 1;
             target.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
@@ -115,7 +118,7 @@ public class PlayerControlSecond : MonoBehaviour
             {
                 Move(Speed);
             }
-            
+
             if (Input.GetKey(KeyCode.LeftArrow)) //when Right Key pressed (D)
             {
                 Move(-Speed);
@@ -126,7 +129,10 @@ public class PlayerControlSecond : MonoBehaviour
             }
             if (Input.GetKey(KeyCode.RightShift))
             {
-                audioplayer.PlayOneShot(audioblock);
+                if (!audioplayer.isPlaying)
+                {
+                    audioplayer.PlayOneShot(audioblock);
+                }
                 anim.SetBool("IsBlock", true);
                 GameObject enemy = GameObject.FindGameObjectWithTag("Player");
                 enemy.GetComponent<PlayerControl>().OpponentIsCatcheable = false;
@@ -150,12 +156,13 @@ public class PlayerControlSecond : MonoBehaviour
                                                                 target.transform.position.y + 2f,
                                                                 target.transform.position.z);
                     }
-                    enemy.GetComponent<Rigidbody2D>().AddForce(new Vector2(600f * direction, 1000f));
+                    enemy.GetComponent<Rigidbody2D>().AddForce(new Vector2(600f * direction, 200f));
                     TiltCount = 0;
                 }
             }
             if (Input.GetKey(KeyCode.RightControl) && OpponentIsCatcheable) //when Right Key pressed (D)
             {
+                anim.SetBool("IsAttack", true);
                 audioplayer.PlayOneShot(audioattack);
                 GameObject enemy = GameObject.FindGameObjectWithTag("Player");
                 enemy.GetComponent<PlayerControl>().YouCatched = true;
@@ -184,18 +191,20 @@ public class PlayerControlSecond : MonoBehaviour
                 EscapeCount++;
                 if (EscapeCount == 1)
                 {
+                    anim.SetBool("IsHolded", false);
+                    anim.SetBool("IsFall", false);
                     target.transform.rotation = Quaternion.Euler(0, 0, 0);
                     YouCatched = false;
                     EscapeCount = 0;
-                }   
+                }
             }
         }
     }
-
     void CountFreezeCatched()
     {
         countfreeze++;
-        if (countfreeze == Timefreeze) {
+        if (countfreeze == Timefreeze)
+        {
             YouCatched = false;
             YouThrowed = false;
             target.transform.rotation = Quaternion.Euler(0, 0, 0);
