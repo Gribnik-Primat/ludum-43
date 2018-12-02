@@ -23,6 +23,7 @@ public class PlayerControlSecond : MonoBehaviour
     public Vector2 Speed = new Vector3(0f, 0f, 0f);
     public Vector2 jump = new Vector2(0f, 2f);
     public int Timefreeze = 1;
+    public GameObject Blood;
 
     private int countfreeze = 0;
     private bool is_jump = false;
@@ -79,6 +80,7 @@ public class PlayerControlSecond : MonoBehaviour
     {
         if (YouCatched == false)// не пойманы
         {
+            Blood.SetActive(false);
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 if (is_jump == true)
@@ -140,6 +142,7 @@ public class PlayerControlSecond : MonoBehaviour
         }
         else// мы пойманы
         {
+            Blood.SetActive(true);
             target.transform.rotation = Quaternion.Euler(0, 0, 90);
             GameObject enemy = GameObject.FindGameObjectWithTag("Player");
             if (YouThrowed == false)

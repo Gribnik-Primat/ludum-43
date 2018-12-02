@@ -9,6 +9,8 @@ TagManager:
   - Score1
   - Time
   - Start
+  - Blood
+  - Blood1
   layers:
   - Default
   - TransparentFX
