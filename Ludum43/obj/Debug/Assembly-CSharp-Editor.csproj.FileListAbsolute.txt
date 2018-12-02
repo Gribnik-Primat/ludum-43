@@ -129,7 +129,6 @@ D:\LudumDare\ludum-43\Ludum43\Temp\bin\Debug\SyntaxTree.VisualStudio.Unity.Messa
 D:\LudumDare\ludum-43\Ludum43\Temp\bin\Debug\Boo.Lang.PatternMatching.dll
 D:\LudumDare\ludum-43\Ludum43\Temp\bin\Debug\Boo.Lang.Useful.dll
 D:\LudumDare\ludum-43\Ludum43\Temp\bin\Debug\Unity.CecilTools.dll
-D:\LudumDare\ludum-43\Ludum43\Temp\bin\Debug\Assembly-CSharp.pdb
 D:\LudumDare\ludum-43\Ludum43\Temp\bin\Debug\UnityEngine.xml
 D:\LudumDare\ludum-43\Ludum43\Temp\bin\Debug\UnityEditor.xml
 D:\LudumDare\ludum-43\Ludum43\Temp\bin\Debug\UnityEngine.AIModule.xml

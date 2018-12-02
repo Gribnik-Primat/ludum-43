@@ -24,6 +24,11 @@ public class PlayerControl : MonoBehaviour
     public Vector2 jump = new Vector2(0f, 2f);
     public int Timefreeze = 1;
     public GameObject Blood;
+    public AudioSource audioplayer;
+    public AudioClip audiojump;
+    public AudioClip audioattack;
+    public AudioClip audiowalk;
+    public AudioClip audioblock;
 
     private int countfreeze = 0;
     private bool is_jump = false;
@@ -34,6 +39,7 @@ public class PlayerControl : MonoBehaviour
     }
     void Move(Vector2 speed)//move через rigidbody
     {
+        audioplayer.PlayOneShot(audiowalk);
         Rb2d.velocity = new Vector2(speed.x, Rb2d.velocity.y);
         if (Rb2d.velocity.x < 0)
         {
@@ -83,6 +89,7 @@ public class PlayerControl : MonoBehaviour
             Blood.SetActive(false);
             if (Input.GetKeyDown(KeyCode.W))
             {
+                audioplayer.PlayOneShot(audiojump);
                 if (is_jump == true)
                 {
                     is_jump = false;
@@ -108,6 +115,7 @@ public class PlayerControl : MonoBehaviour
             }
             if (Input.GetKey(KeyCode.G))
             {
+                audioplayer.PlayOneShot(audioblock);
                 GameObject enemy = GameObject.FindGameObjectWithTag("Player1");
                 enemy.GetComponent<PlayerControlSecond>().OpponentIsCatcheable = false;
                 YouCatched = false;
@@ -117,6 +125,7 @@ public class PlayerControl : MonoBehaviour
                 TiltCount++;
                 if (TiltCount == 1)
                 {
+                    audioplayer.PlayOneShot(audioattack);
                     OpponentCatched = false;
                     GameObject enemy = GameObject.FindGameObjectWithTag("Player1");
                     enemy.GetComponent<PlayerControlSecond>().YouThrowed = true;
@@ -134,7 +143,9 @@ public class PlayerControl : MonoBehaviour
             }
             if (Input.GetKey(KeyCode.F) && OpponentIsCatcheable) //when Right Key pressed (D)
             {
+                audioplayer.PlayOneShot(audioattack);
                 GameObject enemy = GameObject.FindGameObjectWithTag("Player1");
+                enemy.GetComponent<Animator>().SetBool("IsFreed",true);
                 enemy.GetComponent<PlayerControlSecond>().YouCatched = true;
                 OpponentCatched = true;
             }

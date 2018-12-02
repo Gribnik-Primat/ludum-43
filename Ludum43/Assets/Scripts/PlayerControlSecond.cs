@@ -10,6 +10,7 @@ using System.Collections;
 public class PlayerControlSecond : MonoBehaviour
 {
     //init variables
+    public Animator anim;
     public GameObject target; //also an error here.
     public Rigidbody2D Rb2d; //движение игрока
     public bool OpponentIsCatcheable = false; // противник в радиусе захвата
@@ -24,6 +25,12 @@ public class PlayerControlSecond : MonoBehaviour
     public Vector2 jump = new Vector2(0f, 2f);
     public int Timefreeze = 1;
     public GameObject Blood;
+    public AudioSource audioplayer;
+    public AudioClip audiojump;
+    public AudioClip audioattack;
+    public AudioClip audiowalk;
+    public AudioClip audioblock;
+
 
     private int countfreeze = 0;
     private bool is_jump = false;
@@ -34,6 +41,8 @@ public class PlayerControlSecond : MonoBehaviour
     }
     void Move(Vector2 speed)//move через rigidbody
     {
+        audioplayer.PlayOneShot(audiowalk);
+        anim.SetBool("IsWalk", true);
         Rb2d.velocity = new Vector2(speed.x, Rb2d.velocity.y);
         if (Rb2d.velocity.x < 0)
         {
@@ -41,7 +50,7 @@ public class PlayerControlSecond : MonoBehaviour
             target.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
         if (Rb2d.velocity.x > 0)
-        {
+        {   
             direction = 1;
             target.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
@@ -78,11 +87,19 @@ public class PlayerControlSecond : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        anim.SetBool("IsBlock", false);
+        anim.SetBool("IsAttack", false);
+        anim.SetBool("IsJump", false);
+        anim.SetBool("IsWalk", false);
+        anim.SetBool("IsFreed", false);
         if (YouCatched == false)// не пойманы
         {
+            anim.SetBool("IsFall", false);
             Blood.SetActive(false);
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
+                audioplayer.PlayOneShot(audiojump);
+                anim.SetBool("IsJump", true);
                 if (is_jump == true)
                 {
                     is_jump = false;
@@ -109,12 +126,16 @@ public class PlayerControlSecond : MonoBehaviour
             }
             if (Input.GetKey(KeyCode.RightShift))
             {
+                audioplayer.PlayOneShot(audioblock);
+                anim.SetBool("IsBlock", true);
                 GameObject enemy = GameObject.FindGameObjectWithTag("Player");
                 enemy.GetComponent<PlayerControl>().OpponentIsCatcheable = false;
                 YouCatched = false;
             }
             if (OpponentCatched && Input.GetKeyDown(KeyCode.RightControl))
             {
+                audioplayer.PlayOneShot(audioattack);
+                anim.SetBool("IsAttack", true);
                 TiltCount++;
                 if (TiltCount == 1)
                 {
@@ -135,6 +156,7 @@ public class PlayerControlSecond : MonoBehaviour
             }
             if (Input.GetKey(KeyCode.RightControl) && OpponentIsCatcheable) //when Right Key pressed (D)
             {
+                audioplayer.PlayOneShot(audioattack);
                 GameObject enemy = GameObject.FindGameObjectWithTag("Player");
                 enemy.GetComponent<PlayerControl>().YouCatched = true;
                 OpponentCatched = true;
@@ -147,8 +169,14 @@ public class PlayerControlSecond : MonoBehaviour
             GameObject enemy = GameObject.FindGameObjectWithTag("Player");
             if (YouThrowed == false)
             {
+                anim.SetBool("IsHolded", true);
                 target.transform.position = enemy.transform.position;
                 target.transform.position = new Vector3(enemy.transform.position.x, enemy.transform.position.y + DisatanceUpHead, enemy.transform.position.z);
+            }
+            if (YouThrowed == true)
+            {
+                anim.SetBool("IsHolded", false);
+                anim.SetBool("IsFall", true);
             }
             Rb2d.velocity.Set(0, 0);
             if (Input.GetKeyDown(KeyCode.RightControl))

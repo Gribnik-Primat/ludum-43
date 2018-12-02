@@ -15,6 +15,8 @@ public class EndGame : MonoBehaviour {
     public GameObject Text1;
     public GameObject Text2;
     public DisplayScore Ds;
+    public AudioSource audioplayer;
+    public AudioClip audio;
 
     private bool timeCheck = true;
     private AsyncOperation asyncOperation;
@@ -55,6 +57,7 @@ public class EndGame : MonoBehaviour {
             asyncOperation = SceneManager.LoadSceneAsync("Menu");
             asyncOperation.allowSceneActivation = false;
             Text1.SetActive(true);
+            audioplayer.PlayOneShot(audio);
             if (Input.anyKeyDown)
             {
                 LaunchGame();
@@ -72,6 +75,7 @@ public class EndGame : MonoBehaviour {
             asyncOperation = SceneManager.LoadSceneAsync("Menu");
             asyncOperation.allowSceneActivation = false;
             Text2.SetActive(true);
+            audioplayer.PlayOneShot(audio);
             if (Input.anyKeyDown)
             {
                 LaunchGame();

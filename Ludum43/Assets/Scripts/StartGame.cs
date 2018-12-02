@@ -12,6 +12,9 @@ public class StartGame : MonoBehaviour {
     public GameObject Player1;
     public GameObject start;
     public DisplayScore Ds;
+    public AudioSource audiostartplayer;
+    public AudioClip audiostart;
+
     // Use this for initialization
     void Start () {
         StartCoroutine(Wait());
@@ -44,7 +47,8 @@ public class StartGame : MonoBehaviour {
         t.text = "1!!!";
         yield return new WaitForSecondsRealtime(1);
         t.text = "GO!!!";
-        yield return new WaitForSecondsRealtime(1); ;
+        yield return new WaitForSecondsRealtime(1);
+        audiostartplayer.PlayOneShot(audiostart);
         Score.SetActive(true);
         Score1.SetActive(true);
         Time.SetActive(true);

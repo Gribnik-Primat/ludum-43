@@ -10,6 +10,9 @@ public class DestroyAndCreate : MonoBehaviour {
     public int minusScoreOnTeleport;
     public Rigidbody2D RbPlayer1;
     public Rigidbody2D RbPlayer2;
+    public AudioSource audioplayer;
+    public AudioClip audioangel;
+    public AudioClip audiodevil;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
@@ -21,6 +24,7 @@ public class DestroyAndCreate : MonoBehaviour {
             enemy = GameObject.FindWithTag("Player");
             enemy.GetComponent<PlayerStats>().score -= minusScoreOnTeleport;
             enemy.transform.position = teleportPoint1;
+            audioplayer.PlayOneShot(audioangel);
         }
         if (collision.tag == "Player1")
         {
@@ -31,6 +35,7 @@ public class DestroyAndCreate : MonoBehaviour {
             enemy = GameObject.FindWithTag("Player1");
             enemy.GetComponent<PlayerStats>().score -= minusScoreOnTeleport;
             enemy.transform.position = teleportPoint2;
+            audioplayer.PlayOneShot(audiodevil);
         }
     }
 }
