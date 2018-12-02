@@ -164,8 +164,10 @@ D:\LudumDare\ludum-43\Ludum43\Temp\bin\Debug\Vuforia.UnityExtensions.xml
 D:\LudumDare\ludum-43\Ludum43\Temp\bin\Debug\UnityEngine.GoogleAudioSpatializer.xml
 D:\LudumDare\ludum-43\Ludum43\Temp\bin\Debug\UnityEngine.HoloLens.xml
 D:\LudumDare\ludum-43\Ludum43\Temp\bin\Debug\UnityEngine.SpatialTracking.xml
-D:\LudumDare\ludum-43\Ludum43\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
 D:\LudumDare\ludum-43\Ludum43\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
 D:\LudumDare\ludum-43\Ludum43\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 D:\LudumDare\ludum-43\Ludum43\obj\Debug\Assembly-CSharp.dll
 D:\LudumDare\ludum-43\Ludum43\obj\Debug\Assembly-CSharp.pdb
+D:\LudumDare\ludum-43\Ludum43\Temp\bin\Debug\com.unity.postprocessing.Editor.dll
+D:\LudumDare\ludum-43\Ludum43\Temp\bin\Debug\com.unity.postprocessing.Runtime.dll
+D:\LudumDare\ludum-43\Ludum43\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
