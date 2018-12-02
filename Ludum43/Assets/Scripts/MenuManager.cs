@@ -72,7 +72,7 @@ public class MenuManager : MonoBehaviour
     }
     void Quit()
     {
-        Debug.Log("exit pressed");
+        //Debug.Log("exit pressed");
         Application.Quit();
     }
 
