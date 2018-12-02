@@ -96,12 +96,7 @@ public class PlayerControlSecond : MonoBehaviour
             {
                 Move(Speed);
             }
-            if (Input.GetKey(KeyCode.RightControl) && OpponentIsCatcheable) //when Right Key pressed (D)
-            {
-                GameObject enemy = GameObject.FindGameObjectWithTag("Player");
-                enemy.GetComponent<PlayerControl>().YouCatched = true;
-                OpponentCatched = true;
-            }
+            
             if (Input.GetKey(KeyCode.LeftArrow)) //when Right Key pressed (D)
             {
                 Move(-Speed);
@@ -119,7 +114,7 @@ public class PlayerControlSecond : MonoBehaviour
             if (OpponentCatched && Input.GetKeyDown(KeyCode.RightControl))
             {
                 TiltCount++;
-                if (TiltCount == 2)
+                if (TiltCount == 1)
                 {
                     OpponentCatched = false;
                     GameObject enemy = GameObject.FindGameObjectWithTag("Player");
@@ -136,8 +131,12 @@ public class PlayerControlSecond : MonoBehaviour
                     TiltCount = 0;
                 }
             }
-
-
+            if (Input.GetKey(KeyCode.RightControl) && OpponentIsCatcheable) //when Right Key pressed (D)
+            {
+                GameObject enemy = GameObject.FindGameObjectWithTag("Player");
+                enemy.GetComponent<PlayerControl>().YouCatched = true;
+                OpponentCatched = true;
+            }
         }
         else// мы пойманы
         {
@@ -152,11 +151,12 @@ public class PlayerControlSecond : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.RightControl))
             {
                 EscapeCount++;
-                if (EscapeCount == 2)
+                if (EscapeCount == 1)
                 {
                     target.transform.rotation = Quaternion.Euler(0, 0, 0);
                     YouCatched = false;
-                }
+                    EscapeCount = 0;
+                }   
             }
         }
     }

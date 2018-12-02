@@ -17,7 +17,7 @@ public class EndGame : MonoBehaviour {
     public DisplayScore Ds;
 
     private bool timeCheck = true;
-    AsyncOperation asyncOperation;
+    private AsyncOperation asyncOperation;
 
     // Use this for initialization
     void Start () {
@@ -38,6 +38,10 @@ public class EndGame : MonoBehaviour {
             asyncOperation = SceneManager.LoadSceneAsync("Menu");
             asyncOperation.allowSceneActivation = false;
             Text.SetActive(true);
+            if (Input.anyKeyDown)
+            {
+                LaunchGame();
+            }
         }
         if (Player.GetComponent<PlayerStats>().score > 499 && timeCheck == true)
         {
@@ -51,6 +55,10 @@ public class EndGame : MonoBehaviour {
             asyncOperation = SceneManager.LoadSceneAsync("Menu");
             asyncOperation.allowSceneActivation = false;
             Text1.SetActive(true);
+            if (Input.anyKeyDown)
+            {
+                LaunchGame();
+            }
         }
         if (Player1.GetComponent<PlayerStats>().score > 499 && timeCheck == true)
         {
@@ -64,12 +72,13 @@ public class EndGame : MonoBehaviour {
             asyncOperation = SceneManager.LoadSceneAsync("Menu");
             asyncOperation.allowSceneActivation = false;
             Text2.SetActive(true);
+            if (Input.anyKeyDown)
+            {
+                LaunchGame();
+            }
         }
 
-        if (Input.anyKeyDown)
-        {
-            LaunchGame();
-        }
+      
     }
 
     void LaunchGame()

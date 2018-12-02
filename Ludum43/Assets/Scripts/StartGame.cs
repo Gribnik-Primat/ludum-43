@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class StartGame : MonoBehaviour {
 
+    public GameObject Tutorial;
     public GameObject Score;
     public GameObject Score1;
     public GameObject Time;
@@ -29,6 +30,12 @@ public class StartGame : MonoBehaviour {
         Time.SetActive(false);
         Player.SetActive(false);
         Player1.SetActive(false);
+
+        Tutorial.SetActive(true);
+        yield return new WaitForSecondsRealtime(3);
+        Tutorial.SetActive(false);
+
+        start.SetActive(true);
         Text t = start.GetComponent<Text>();
         t.text = "3!";
         yield return new WaitForSecondsRealtime(1);
